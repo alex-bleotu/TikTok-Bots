@@ -2,12 +2,12 @@ from google.cloud import speech
 from google.cloud import texttospeech
 import os
 
-def generate(fileName):
+def generate():
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "utils/credentials.json"
 
     tts_client = texttospeech.TextToSpeechClient()
 
-    with open("texts/" + fileName + ".txt", 'r') as file:
+    with open("temp/text.txt", 'r') as file:
         text = file.read().replace('\n', '')
     synthesis_input = texttospeech.SynthesisInput(text=text)
 
@@ -26,9 +26,13 @@ def generate(fileName):
         voice=voice,
         audio_config=audio_config
     )
-    if not os.path.exists("audio/" + fileName + ".mp3"):
-        open("audio/" + fileName + ".mp3", 'w').close()
-    with open("audio/" + fileName + ".mp3", "wb") as out:
+    if not os.path.exists("temp/text.mp3"):
+        open("temp/text.mp3", 'w').close()
+    with open("temp/text.mp3", "wb") as out:
         out.write(response.audio_content)
-        print("Audio content written to file '" + fileName + ".mp3'")
+        print("Audio content written to file 'text.mp3'")
+
+    os.remove("temp/text.txt")
+
+
 

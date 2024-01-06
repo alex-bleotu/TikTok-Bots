@@ -63,13 +63,15 @@ def add_subtitles(video_clip, audio_path):
 
     return final_clip
 
-def generate(fileName):
+def generate(output):
     video_folder = 'videos'
-    audio_file = 'audio/' + fileName + '.mp3'
-    output_file = 'output/' + fileName + '.mp4'
+    audio_file = 'temp/text.mp3'
+    output_file = 'output/' + output + '.mp4'
 
     random_video = choose_random_video(video_folder)
     if random_video:
         process_video(os.path.join(video_folder, random_video), audio_file, output_file)
     else:
         print("No video files found in the specified folder.")
+
+    os.remove(audio_file)
