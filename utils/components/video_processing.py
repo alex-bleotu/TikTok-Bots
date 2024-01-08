@@ -20,7 +20,7 @@ class VideoProcessing:
         audio = MP3(audio_file)
         return audio.info.length
 
-    def __process_video(self, video_path, audio_path, output_path, subtitles):
+    def __process_video(self, video_path, audio_path, output_path, caption):
         audio_duration = self.__get_audio_duration(audio_path)
         video_clip = VideoFileClip(video_path)
 
@@ -35,8 +35,8 @@ class VideoProcessing:
         audio_clip = AudioFileClip(audio_path).volumex(0.5)
         final_clip = cropped_clip.set_audio(audio_clip)
 
-        if subtitles:
-            final_clip = self.__add_subtitles(final_clip, audio_path)
+        if caption.enabled == True:
+            final_clip = self.__add_subtitles(final_clip, audio_path, caption)
 
         final_clip.write_videofile(output_path, codec='libx264', logger=None)
 
@@ -49,7 +49,7 @@ class VideoProcessing:
 
         return words
 
-    def __add_subtitles(self, video_clip, audio_path):
+    def __add_subtitles(self, video_clip, audio_path, caption):
         transcription_result = self.__transcribe_audio(audio_path)
 
         subtitles_clips = []
@@ -59,8 +59,18 @@ class VideoProcessing:
             end_time = phrase.end_sec
             text = phrase.word
 
-            txt_clip = TextClip(text.upper(), fontsize=48, color='white', font='Comic-Sans-MS-Bold', stroke_color='black',
-                        method='label', stroke_width=2, align='center').set_position('center').set_duration(
+            txt_clip = TextClip(text.upper(),
+                                fontsize=caption.fontSize,
+                                color=caption.color,
+                                font=caption.font,
+                                stroke_color=caption.strokeColor,
+                                stroke_width=caption.strokeWidth,
+                                align=caption.align,
+                                kerning=caption.kerning,
+                                interline=caption.interline,
+                                bg_color=caption.bgColor,
+                                method="caption"
+            ).set_position(caption.position).set_duration(
                 end_time - start_time).set_start(start_time)
 
             subtitles_clips.append(txt_clip)
@@ -69,14 +79,14 @@ class VideoProcessing:
 
         return final_clip
 
-    def generate_facts(self, subtitles = True):
+    def generate_facts(self, caption):
         video_folder = 'utils/videos'
         audio_file = 'utils/temp/text.mp3'
-        output_file = 'utils/temp/output.mp4'
+        output_file = 'utils/output/output.mp4'
 
         random_video = self.__choose_random_video(video_folder)
         if random_video:
-            self.__process_video(os.path.join(video_folder, random_video), audio_file, output_file, subtitles)
+            self.__process_video(os.path.join(video_folder, random_video), audio_file, output_file, caption)
 
         os.remove(audio_file)
 

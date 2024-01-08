@@ -16,20 +16,33 @@ class VideoType(Enum):
 
 
 class MotivationalVideo:
-    def __init__(self, type, url, caption, flitered, music):
+    def __init__(self, type, url, filtered, music):
         self.type = VideoType.from_str(type)
         self.url = url
-        self.caption = caption
-        self.flitered = flitered
+        self.filtered = filtered
         self.music = music
 
 
 class FactVideo:
-    def __init__(self, type, topic, caption, voice):
+    def __init__(self, type, topic, voice):
         self.type = VideoType.from_str(type)
         self.topic = topic
-        self.caption = caption
         self.voice = voice
+
+
+class CaptionSettings:
+    def __init__(self, fontSize, color, font, strokeColor, strokeWidth, align, position, enabled, bgColor, kerning, interline):
+        self.fontSize = fontSize
+        self.color = color
+        self.font = font
+        self.strokeColor = strokeColor
+        self.strokeWidth = strokeWidth
+        self.align = align
+        self.position = position
+        self.enabled = enabled
+        self.bgColor = bgColor
+        self.kerning = kerning
+        self.interline = interline
 
 
 class JsonReader:
@@ -47,3 +60,8 @@ class JsonReader:
                 return FactVideo(**data)
             else:
                 raise ValueError("Invalid user type")
+
+    def create_caption_settings_from_json(self):
+        with open("caption.json", 'r') as file:
+            data = json.load(file)
+            return CaptionSettings(**data)
