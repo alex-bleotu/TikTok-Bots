@@ -30,7 +30,6 @@ def generate():
         open("temp/text.mp3", 'w').close()
     with open("temp/text.mp3", "wb") as out:
         out.write(response.audio_content)
-        print("Audio content written to file 'text.mp3'")
 
     os.remove("temp/text.txt")
 

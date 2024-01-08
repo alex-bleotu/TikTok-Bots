@@ -1,8 +1,6 @@
-from components import textToSpeech as tts
-from components import videoProcessing as vid
-from components import textGenerator as tg
-from components.textGenerator import Type
+from components.console import ConsoleUI
 
-tg.generate(Type.FACTS)
-tts.generate()
-vid.generate("output")
+console = ConsoleUI()
+
+if __name__ == '__main__':
+    console.run()

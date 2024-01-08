@@ -6,10 +6,19 @@ from openai import OpenAI
 class Type(Enum):
     FACTS = 1
 
-def generate(promt_type):
+def getPromt(type):
+    if type == Type.FACTS:
+        with open("promts/facts.txt", 'r') as file:
+            prompt = file.readline().strip()
+    return prompt
+
+def generate(promt_type, new_promt = None):
     if promt_type == Type.FACTS:
         with open("promts/facts.txt", 'r') as file:
             prompt = file.read()
+
+    if new_promt is not None:
+        prompt += ", make the facts specifically about " + new_promt
 
     client = OpenAI(
         # defaults to os.environ.get("OPENAI_API_KEY")
@@ -24,9 +33,12 @@ def generate(promt_type):
                 {"role": "user", "content": prompt}
             ]
         )
-        with open("temp/text.txt", 'w') as file:
-            print(response.choices[0].message.content.strip().replace("\n", ""))
-            file.write(response.choices[0].message.content.strip().replace("\n", ""))
+        return response.choices[0].message.content.strip().replace("\n", "")
     except Exception as e:
         print(e)
+
+def save_text(text):
+    with open("temp/text.txt", 'w') as file:
+        file.write(text)
+
 

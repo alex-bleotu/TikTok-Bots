@@ -4,6 +4,9 @@ from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVide
 from mutagen.mp3 import MP3
 import pvleopard
 from moviepy.config import change_settings
+import logging
+
+logging.getLogger('moviepy').setLevel(logging.ERROR)
 
 change_settings({"IMAGEMAGICK_BINARY": "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"})
 
@@ -15,7 +18,7 @@ def get_audio_duration(audio_file):
     audio = MP3(audio_file)
     return audio.info.length
 
-def process_video(video_path, audio_path, output_path):
+def process_video(video_path, audio_path, output_path, subtitles):
     audio_duration = get_audio_duration(audio_path)
     video_clip = VideoFileClip(video_path)
 
@@ -30,9 +33,10 @@ def process_video(video_path, audio_path, output_path):
     audio_clip = AudioFileClip(audio_path).volumex(0.5)
     final_clip = cropped_clip.set_audio(audio_clip)
 
-    final_clip = add_subtitles(final_clip, audio_path)
+    if subtitles:
+        final_clip = add_subtitles(final_clip, audio_path)
 
-    final_clip.write_videofile(output_path, codec='libx264')
+    final_clip.write_videofile(output_path, codec='libx264', logger=None)
 
 def transcribe_audio(audio_path):
     options = pvleopard.create(
@@ -63,15 +67,16 @@ def add_subtitles(video_clip, audio_path):
 
     return final_clip
 
-def generate(output):
+def generate(subtitles = True):
     video_folder = 'videos'
     audio_file = 'temp/text.mp3'
-    output_file = 'output/' + output + '.mp4'
+    output_file = 'output.mp4'
 
     random_video = choose_random_video(video_folder)
     if random_video:
-        process_video(os.path.join(video_folder, random_video), audio_file, output_file)
-    else:
-        print("No video files found in the specified folder.")
+        process_video(os.path.join(video_folder, random_video), audio_file, output_file, subtitles)
 
     os.remove(audio_file)
+
+def open_video():
+    os.startfile('output.mp4')
