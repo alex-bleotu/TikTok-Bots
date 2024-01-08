@@ -1,6 +1,8 @@
 {
   "type": "motivation",
-  "url": "https://youtu.be/JA51o01QLBo?si=oTkxMAN5tRToJeQy",
-  "filtered": true,
-  "music": null
+  "url": "https://www.youtube.com/watch?v=p79lX4HyABA",
+  "filtered": false,
+  "music": null,
+  "start": "01:30",
+  "end": "02:00"
 }

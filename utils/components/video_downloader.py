@@ -7,17 +7,14 @@ class VideoDownloader:
     def __init__(self):
         pass
 
-    def download(url):
-        print("Downloading video from YouTube...")
+    def download(self, url):
         yt = YouTube(url)
         ys = yt.streams.get_highest_resolution()
-        ys.download(output_path="temp", filename="video.mp4")
-        print("Downloaded video complete!")
+        ys.download(output_path="utils/temp", filename="video.mp4")
 
-    def  download_high_quality(url):
+    def download_high_quality(self, url):
         save_path = "temp"
 
-        print("Downloading video from YouTube...")
         yt = YouTube(url)
 
         ys = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
@@ -40,5 +37,3 @@ class VideoDownloader:
 
         os.remove(video_path)
         os.remove(audio_path)
-
-        print("Downloading video completed!")

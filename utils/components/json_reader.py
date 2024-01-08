@@ -14,13 +14,19 @@ class VideoType(Enum):
                 return member
         raise ValueError(f"{label} is not a valid VideoType")
 
+def string_to_seconds(time):
+    time = time.split(':')
+    return int(time[0]) * 60 + int(time[1])
+
 
 class MotivationalVideo:
-    def __init__(self, type, url, filtered, music):
+    def __init__(self, type, url, filtered, music, start, end):
         self.type = VideoType.from_str(type)
         self.url = url
         self.filtered = filtered
         self.music = music
+        self.start = string_to_seconds(start)
+        self.end = string_to_seconds(end)
 
 
 class FactVideo:

@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "fontSize": 20,
+  "fontSize": 48,
   "color": "white",
   "font": "Montserrat-Subrayada",
   "strokeColor": "black",
@@ -9,6 +9,5 @@
   "position": "center",
   "bgColor": "transparent",
   "kerning": null,
-  "interline": null,
-  "maxWordsPer"
+  "interline": null
 }

@@ -4,6 +4,7 @@ from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVide
 from mutagen.mp3 import MP3
 import pvleopard
 from moviepy.config import change_settings
+from moviepy.video.fx import all as fx
 
 change_settings({"IMAGEMAGICK_BINARY": "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"})
 
@@ -20,13 +21,19 @@ class VideoProcessing:
         audio = MP3(audio_file)
         return audio.info.length
 
-    def __process_video(self, video_path, audio_path, output_path, caption):
+    def __process_video(self, video_path, audio_path, output_path, caption, start = None, end = None, filtered = False):
         audio_duration = self.__get_audio_duration(audio_path)
         video_clip = VideoFileClip(video_path)
 
-        max_start = max(0, video_clip.duration - audio_duration)
-        start_time = random.uniform(0, max_start)
-        video_segment = video_clip.subclip(start_time, start_time + audio_duration)
+        if start != None and end != None:
+            max_start = max(0, video_clip.duration - audio_duration)
+            start_time = random.uniform(0, max_start)
+            video_segment = video_clip.subclip(start_time, start_time + audio_duration)
+        else:
+            video_segment = video_clip.subclip(start, end)
+
+        if filtered:
+            video_segment = video_segment.fx(fx.blackwhite)
 
         new_width = int(video_segment.size[1] * 9 / 16)
         margin = (video_segment.size[0] - new_width) // 2
@@ -39,6 +46,12 @@ class VideoProcessing:
             final_clip = self.__add_subtitles(final_clip, audio_path, caption)
 
         final_clip.write_videofile(output_path, codec='libx264', logger=None)
+
+        video_clip.close()
+        video_segment.close()
+        cropped_clip.close()
+        audio_clip.close()
+        final_clip.close()
 
     def __transcribe_audio(self, audio_path):
         options = pvleopard.create(
@@ -79,8 +92,23 @@ class VideoProcessing:
 
         return final_clip
 
-    def generate_facts(self, caption):
-        video_folder = 'utils/videos'
+    def generate_motivational(self, caption, start, end, filtered):
+        video_file = 'utils/temp/video.mp4'
+        output_file = 'utils/output/output.mp4'
+        audio_file = 'utils/temp/audio.mp3'
+
+        video_clip = VideoFileClip(video_file)
+        audio_clip = video_clip.audio.subclip(start, end)
+        audio_clip.write_audiofile(audio_file, logger=None)
+        video_clip.close()
+
+        self.__process_video(video_file, audio_file, output_file, caption, start, end, filtered)
+
+        os.remove(audio_file)
+        os.remove(video_file)
+
+    def generate_facts(self, caption, filtered):
+        video_folder = 'utils/background'
         audio_file = 'utils/temp/text.mp3'
         output_file = 'utils/output/output.mp4'
 

@@ -20,9 +20,10 @@ class Controller:
 
     def __runMotivation(self, video, caption):
         print("Downloading video from " + video.url)
-        self.__vd.download(video.url)
+        # self.__vd.download(video.url)
         print("Video downloaded")
-        # self.__vp.generate_facts(caption)
+        self.__vp.generate_motivational(caption, video.start, video.end, video.filtered)
+        print("Video generated")
         # self.__vp.open_video()
 
     def __runFacts(self, video, caption):
