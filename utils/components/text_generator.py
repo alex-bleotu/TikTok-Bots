@@ -1,26 +1,41 @@
 from openai import OpenAI
 from utils.components.json_reader import VideoType as Type
 
+
 class TextGenerator:
     def __init__(self):
         pass
 
-    def getPromt(self, type):
+    def get_promt(self, type):
         if type == Type.FACTS:
-            with open("utils/promts/facts.txt", 'r') as file:
+            with open("utils/prompts/fact.txt", 'r') as file:
                 prompt = file.readline().strip()
         return prompt
 
-    def generate(self, promt_type, new_promt = None):
-        if promt_type == Type.FACT:
-            with open("utils/promts/facts.txt", 'r') as file:
-                prompt = file.read()
+    def generate(self, promt_type, new_promt = None, example = None):
+
+        if example is None:
+            if promt_type == Type.FACT:
+                with open("utils/prompts/facts/fact.txt", 'r') as file:
+                    prompt = file.read()
+                    prompt += "make a script like the on above,the script must have the same structure with a different wiered begining and other facts"
+                    print(prompt)
+            elif promt_type == Type.STORY:
+                with open("utils/prompts/stories/story.txt", 'r') as file:
+                    prompt = file.read()
+                    prompt += "make a script like the on above,the script must have the same structure but a different story"
+            else:
+                raise Exception("Invalid promt type")
+        else:
+            prompt = example
 
         if new_promt is not None:
-            prompt += ", make the facts specifically about " + new_promt
+            if promt_type == Type.FACT:
+                prompt += ", make the facts specifically about " + new_promt
+            else:
+                prompt += ", make the story specifically about " + new_promt
 
         client = OpenAI(
-            # defaults to os.environ.get("OPENAI_API_KEY")
             api_key="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",
         )
 

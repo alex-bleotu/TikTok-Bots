@@ -18,22 +18,41 @@ class Controller:
         self.__tts = tts
         self.__js = js
 
-    def __runMotivation(self, video, caption):
-        print("Downloading video from " + video.url)
-        # self.__vd.download(video.url)
-        print("Video downloaded")
-        self.__vp.generate_motivational(caption, video.start, video.end, video.filtered)
+    def __run_motivation(self, video, caption):
+        for index in range(0, len(video.url)):
+            print("Downloading video from " + video.url[index])
+            self.__vd.download(video.url[index])
+            print("Video downloaded")
+            self.__vp.generate_motivational(caption, video.start, video.end, video.filtered, index)
+            print("Video " + str(index) + " added")
+            index += 1
+
+        self.__vp.compile_video()
+
         print("Video generated")
         # self.__vp.open_video()
 
-    def __runFacts(self, video, caption):
-        script = self.__tg.generate(Type.FACT, video.topic)
-        print("Script generated about " + video.topic)
+    def __run_facts(self, video, caption):
+        script = self.__tg.generate(Type.FACT, video.topic, video.example)
+        if video.topic is not None:
+            print("Script generated about " + video.topic)
         print(script)
         self.__tg.save_text(script)
         self.__tts.generate(video.voice)
         print("TTS generated")
-        self.__vp.generate_facts(caption)
+        self.__vp.generate_facts(caption, video.background)
+        print("Video generated")
+        # self.__vp.open_video()
+
+    def __run_story(self, video, caption):
+        script = self.__tg.generate(Type.STORY, video.topic, video.example)
+        if video.topic is not None:
+            print("Script generated about " + video.topic)
+        print(script)
+        self.__tg.save_text(script)
+        self.__tts.generate(video.voice)
+        print("TTS generated")
+        self.__vp.generate_facts(caption, video.background)
         print("Video generated")
         # self.__vp.open_video()
 
@@ -43,8 +62,8 @@ class Controller:
         video = self.__js.create_user_from_json()
         caption = self.__js.create_caption_settings_from_json()
         if video.type == Type.MOTIVATION:
-            self.__runMotivation(video, caption)
+            self.__run_motivation(video, caption)
         elif video.type == Type.FACT:
-            self.__runFacts(video, caption)
+            self.__run_facts(video, caption)
         else:
             raise Exception("Invalid video type")

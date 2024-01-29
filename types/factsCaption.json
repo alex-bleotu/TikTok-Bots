@@ -2,12 +2,13 @@
   "enabled": true,
   "fontSize": 48,
   "color": "white",
-  "font": "Montserrat-Subrayada",
+  "font": "Arial-Black",
   "strokeColor": "black",
   "strokeWidth": 2,
-  "align": "center",
+  "align": null,
   "position": "center",
   "bgColor": "transparent",
-  "kerning": null,
-  "interline": null
+  "kerning": -2,
+  "interline": null,
+  "phrase": false
 }

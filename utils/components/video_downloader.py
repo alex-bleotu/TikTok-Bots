@@ -15,7 +15,7 @@ class VideoDownloader:
     def download_high_quality(self, url):
         save_path = "temp"
 
-        yt = YouTube(url)
+        yt = YouTube(url, use_oauth=True, allow_oauth_cache=True)
 
         ys = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
         ys_audio = yt.streams.filter(only_audio=True).order_by('abr').desc().first()

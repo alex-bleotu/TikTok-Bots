@@ -1,38 +1,26 @@
-from google.cloud import texttospeech
+from elevenlabs import generate, set_api_key
+import elevenlabs
 import os
 
 
 class TextToSpeech:
     def __init__(self):
+        set_api_key("42474569d82f15cae512b010c2332508")
         pass
 
-    def generate(self, voice="default"):
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "utils/credentials/credentials.json"
-
-        tts_client = texttospeech.TextToSpeechClient()
-
+    def generate(self, voice="Adam"):
         with open("utils/temp/text.txt", 'r') as file:
             text = file.read().replace('\n', '')
-        synthesis_input = texttospeech.SynthesisInput(text=text)
 
-        voice = texttospeech.VoiceSelectionParams(
-            language_code="en-US",
-            name="en-US-Studio-Q",
-            ssml_gender=texttospeech.SsmlVoiceGender.MALE
-        )
-        audio_config = texttospeech.AudioConfig(
-            audio_encoding=texttospeech.AudioEncoding.MP3,
-            speaking_rate=1
-
-        )
-        response = tts_client.synthesize_speech(
-            input=synthesis_input,
+        audio = generate(
+            text,
             voice=voice,
-            audio_config=audio_config
+            model="eleven_multilingual_v2"
         )
+
         if not os.path.exists("utils/temp/text.mp3"):
             open("utils/temp/text.mp3", 'w').close()
         with open("utils/temp/text.mp3", "wb") as out:
-            out.write(response.audio_content)
+            out.write(audio)
 
         os.remove("utils/temp/text.txt")

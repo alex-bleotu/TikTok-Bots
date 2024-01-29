@@ -30,14 +30,24 @@ class MotivationalVideo:
 
 
 class FactVideo:
-    def __init__(self, type, topic, voice):
+    def __init__(self, type, topic, voice, background, example):
         self.type = VideoType.from_str(type)
         self.topic = topic
         self.voice = voice
+        self.background = background
+        self.example = example
+
+class StoryVideo:
+    def __init__(self, type, topic, voice, background, example):
+        self.type = VideoType.from_str(type)
+        self.topic = topic
+        self.voice = voice
+        self.background = background
+        self.example = example
 
 
 class CaptionSettings:
-    def __init__(self, fontSize, color, font, strokeColor, strokeWidth, align, position, enabled, bgColor, kerning, interline):
+    def __init__(self, fontSize, color, font, strokeColor, strokeWidth, align, position, enabled, bgColor, kerning, interline, phrase):
         self.fontSize = fontSize
         self.color = color
         self.font = font
@@ -49,6 +59,7 @@ class CaptionSettings:
         self.bgColor = bgColor
         self.kerning = kerning
         self.interline = interline
+        self.phrase = phrase
 
 
 class JsonReader:
@@ -64,6 +75,8 @@ class JsonReader:
                 return MotivationalVideo(**data)
             elif video_type == VideoType.FACT:
                 return FactVideo(**data)
+            elif video_type == VideoType.STORY:
+                return StoryVideo(**data)
             else:
                 raise ValueError("Invalid user type")
 
