@@ -1,11 +1,14 @@
 from elevenlabs import generate, set_api_key
-import elevenlabs
+from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
+key = os.environ.get('TOKEN_ELEVENLABS')
 
 class TextToSpeech:
     def __init__(self):
-        set_api_key("42474569d82f15cae512b010c2332508")
+        set_api_key(key)
         pass
 
     def generate(self, voice="Adam"):

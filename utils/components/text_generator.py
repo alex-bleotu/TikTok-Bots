@@ -1,6 +1,11 @@
 from openai import OpenAI
 from utils.components.json_reader import VideoType as Type
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+key = os.environ.get('TOKEN_CHAT_GPT')
 
 class TextGenerator:
     def __init__(self):
@@ -36,7 +41,7 @@ class TextGenerator:
                 prompt += ", make the story specifically about " + new_promt
 
         client = OpenAI(
-            api_key="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",
+            api_key=key,
         )
 
         try:
