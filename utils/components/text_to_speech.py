@@ -21,9 +21,9 @@ class TextToSpeech:
             model="eleven_multilingual_v2"
         )
 
-        if not os.path.exists("utils/temp/text.mp3"):
-            open("utils/temp/text.mp3", 'w').close()
-        with open("utils/temp/text.mp3", "wb") as out:
+        if not os.path.exists("utils/temp/audio.mp3"):
+            open("utils/temp/audio.mp3", 'w').close()
+        with open("utils/temp/audio.mp3", "wb") as out:
             out.write(audio)
 
         os.remove("utils/temp/text.txt")

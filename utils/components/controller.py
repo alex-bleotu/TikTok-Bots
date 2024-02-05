@@ -23,8 +23,8 @@ class Controller:
             print("Downloading video from " + video.url[index])
             self.__vd.download(video.url[index])
             print("Video downloaded")
-            self.__vp.generate_motivational(caption, video.start, video.end, video.filtered, index)
-            print("Video " + str(index) + " added")
+            self.__vp.generate_motivational(caption, video.start[index], video.end[index], video.filtered, index)
+            print("Video " + str(index + 1) + " added\n")
             index += 1
 
         self.__vp.compile_video()
@@ -35,25 +35,25 @@ class Controller:
     def __run_facts(self, video, caption):
         script = self.__tg.generate(Type.FACT, video.topic, video.example)
         if video.topic is not None:
-            print("Script generated about " + video.topic)
-        print(script)
+            print("\nScript generated about " + video.topic)
+        print("\nNew Script:\n" + script)
         self.__tg.save_text(script)
         self.__tts.generate(video.voice)
-        print("TTS generated")
+        print("\nTTS generated")
         self.__vp.generate_facts(caption, video.background)
-        print("Video generated")
+        print("\nVideo generated")
         # self.__vp.open_video()
 
     def __run_story(self, video, caption):
         script = self.__tg.generate(Type.STORY, video.topic, video.example)
         if video.topic is not None:
-            print("Script generated about " + video.topic)
-        print(script)
+            print("\nScript generated about " + video.topic)
+        print("\n" + script)
         self.__tg.save_text(script)
         self.__tts.generate(video.voice)
-        print("TTS generated")
+        print("\nTTS generated")
         self.__vp.generate_facts(caption, video.background)
-        print("Video generated")
+        print("\nVideo generated")
         # self.__vp.open_video()
 
     def run(self):

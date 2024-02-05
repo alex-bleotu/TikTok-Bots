@@ -14,9 +14,15 @@ class VideoType(Enum):
                 return member
         raise ValueError(f"{label} is not a valid VideoType")
 
-def string_to_seconds(time):
-    time = time.split(':')
-    return int(time[0]) * 60 + int(time[1])
+def string_to_seconds(time_strings):
+    result = []
+
+    for time_str in time_strings:
+        minutes, seconds = map(int, time_str.split(':'))
+        total_seconds = minutes * 60 + seconds
+        result.append(total_seconds)
+
+    return result
 
 
 class MotivationalVideo:

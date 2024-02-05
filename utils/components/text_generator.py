@@ -24,7 +24,7 @@ class TextGenerator:
                 with open("utils/prompts/facts/fact.txt", 'r') as file:
                     prompt = file.read()
                     prompt += "make a script like the on above,the script must have the same structure with a different wiered begining and other facts"
-                    print(prompt)
+                    print("Promt:\n" + prompt)
             elif promt_type == Type.STORY:
                 with open("utils/prompts/stories/story.txt", 'r') as file:
                     prompt = file.read()
@@ -48,7 +48,9 @@ class TextGenerator:
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                    {"role": "system", "content": "dont ever make lists, create short texts, max 150 words, that i can use in a tik tok as a script"},
+                    {"role": "system", "content": "dont ever make lists, create short texts, max 150 words, "
+                                                  "that i can use in a tik tok as a script without hasta tags or "
+                                                  "emojis"},
                     {"role": "user", "content": prompt}
                 ]
             )

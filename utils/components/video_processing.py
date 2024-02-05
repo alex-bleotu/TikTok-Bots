@@ -64,7 +64,6 @@ class VideoProcessing:
     def __transcribe_audio(self, audio_path):
         model = whisper_timestamped.load_model("base")
         caption = whisper_timestamped.transcribe(model, audio_path, "en", min_word_duration=0.01)
-
         return caption
 
     def __split_into_chunks(self, words, max_chars=20):
@@ -157,7 +156,6 @@ class VideoProcessing:
         video_file = 'utils/temp/video.mp4'
         output_file = 'utils/output/output.mp4'
         audio_file = 'utils/temp/audio.mp3'
-        temp_output_file = 'utils/temp/output/'
 
         video_clip = VideoFileClip(video_file)
         audio_clip = video_clip.audio.subclip(start, end)
@@ -170,7 +168,7 @@ class VideoProcessing:
         os.remove(video_file)
 
     def generate_facts(self, caption, background):
-        audio_file = 'utils/temp/text.mp3'
+        audio_file = 'utils/temp/audio.mp3'
         output_file = 'utils/output/output.mp4'
 
         random_video = self.__choose_random_video(background)
