@@ -1,14 +1,16 @@
 {
   "enabled": true,
-  "font_size": 45,
+  "font_size": 50,
   "color": "white",
   "font": "Arial-Black",
   "stroke_color": "black",
   "stroke_width": 2,
-  "align": null,
+  "align": "center",
   "position": "center",
   "bg_color": "transparent",
-  "kerning": -3,
+  "kerning": -2,
   "interline": null,
-  "phrase": false
+  "phrase": false,
+  "punctuation": false,
+  "title": true
 }

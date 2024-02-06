@@ -1,4 +1,4 @@
-from utils.components.json_reader import VideoType as Type
+from components.json_reader import VideoType as Type
 
 banner = """
   ____  _                _         ____        _   
@@ -26,22 +26,22 @@ class Controller:
             self.__vp.generate_motivational(caption, video.start[index], video.end[index], video.filtered, index)
             print("Video " + str(index + 1) + " added\n")
             index += 1
-
         self.__vp.compile_video()
-
         print("Video generated")
+        print("\nHashtags:\n" + self.__tg.get_hash_tags(video.type))
         # self.__vp.open_video()
 
     def __run_facts(self, video, caption):
-        script = self.__tg.generate(Type.FACT, video.topic, video.example, video.fact_type)
-        if video.topic is not None:
-            print("\nScript generated about " + video.topic)
-        print("\nNew Script:\n" + script)
-        self.__tg.save_text(script)
-        self.__tts.generate(video.voice)
-        print("\nTTS generated")
-        self.__vp.generate_facts(caption, video.background, video.filtered)
+        # script = self.__tg.generate(Type.FACT, video.topic, video.example, video.fact_type)
+        # if video.topic is not None:
+        #     print("\nScript generated about " + video.topic)
+        # print("\nNew Script:\n" + script)
+        # self.__tg.save_text(script)
+        # self.__tts.generate(video.voice)
+        # print("\nTTS generated")
+        self.__vp.generate_facts(caption, video.background, video.filtered, music=video.music)
         print("\nVideo generated")
+        print("\nHashtags:\n" + self.__tg.get_hash_tags(video.type, video.fact_type))
         # self.__vp.open_video()
 
     def __run_story(self, video, caption):
@@ -52,8 +52,9 @@ class Controller:
         self.__tg.save_text(script)
         self.__tts.generate(video.voice)
         print("\nTTS generated")
-        self.__vp.generate_stories(caption, video.background)
+        self.__vp.generate_stories(caption, video.background, music=video.music)
         print("\nVideo generated")
+        print("\nHashtags:\n" + self.__tg.get_hash_tags(video.type))
         # self.__vp.open_video()
 
     def run(self):

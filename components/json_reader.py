@@ -61,10 +61,11 @@ class MotivationalVideo:
         self.music = music
         self.start = string_to_seconds(start)
         self.end = string_to_seconds(end)
+        self.music = music
 
 
 class FactVideo:
-    def __init__(self, type, topic, voice, background, example, fact_type, filtered):
+    def __init__(self, type, topic, voice, background, example, fact_type, filtered, music):
         self.type = VideoType.from_str(type)
         self.topic = topic
         self.voice = voice
@@ -72,10 +73,11 @@ class FactVideo:
         self.example = example
         self.fact_type = FactType.from_str(fact_type)
         self.filtered = filtered
+        self.music = music
 
 
 class StoryVideo:
-    def __init__(self, type, topic, voice, background, example, parts, story_type):
+    def __init__(self, type, topic, voice, background, example, parts, story_type, music):
         self.type = VideoType.from_str(type)
         self.topic = topic
         self.voice = voice
@@ -83,16 +85,17 @@ class StoryVideo:
         self.example = example
         self.parts = parts
         self.story_type = StoryType.from_str(story_type)
+        self.music = music
 
 
 class CaptionSettings:
     def __init__(self, font_size, color, font, stroke_color, stroke_width, align, position, enabled, bg_color, kerning,
-                 interline, phrase):
-        self.fontSize = font_size
+                 interline, phrase, punctuation, title):
+        self.font_size = font_size
         self.color = color
         self.font = font
-        self.strokeColor = stroke_color
-        self.strokeWidth = stroke_width
+        self.stroke_color = stroke_color
+        self.stroke_width = stroke_width
         self.align = align
         self.position = position
         self.enabled = enabled
@@ -100,6 +103,8 @@ class CaptionSettings:
         self.kerning = kerning
         self.interline = interline
         self.phrase = phrase
+        self.punctuation = punctuation
+        self.title = title
 
 
 class JsonReader:

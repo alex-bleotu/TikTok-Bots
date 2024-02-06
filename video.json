@@ -1,9 +1,10 @@
 {
   "type": "fact",
-  "topic": "how to be more productive",
+  "topic": "how to be more confident person",
   "background": "motivational",
-  "voice": "2EiwWnXFnvU5JabPnv8n",
+  "voice": "Clyde",
   "example": null,
   "fact_type": "motivational",
-  "filtered": ["very_dark"]
+  "filtered": ["dark"],
+  "music": "motivational"
 }
