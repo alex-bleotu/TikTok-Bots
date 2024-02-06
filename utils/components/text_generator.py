@@ -1,3 +1,5 @@
+import random
+
 from openai import OpenAI
 from utils.components.json_reader import VideoType as Type
 from dotenv import load_dotenv
@@ -17,18 +19,32 @@ class TextGenerator:
                 prompt = file.readline().strip()
         return prompt
 
-    def generate(self, promt_type, new_promt = None, example = None):
+    def __choose_random_promt(self, type, video_type = None):
+        if type == Type.FACT:
+            promts = [f for f in os.listdir("utils/prompts/facts/" + video_type.value + "/") if f.endswith(".txt")]
+            return random.choice(promts)
+        elif type == Type.STORY:
+            promts = [f for f in os.listdir("utils/prompts/stories/" + video_type.value + "/") if f.endswith(".txt")]
+            return random.choice(promts)
+
+    def generate(self, promt_type, new_promt = None, example = None, video_type = None):
 
         if example is None:
             if promt_type == Type.FACT:
-                with open("utils/prompts/facts/fact.txt", 'r') as file:
+                # choose random text file from folder utils/prompts/facts/
+                prompt_file = self.__choose_random_promt(promt_type, video_type)
+                with open("utils/prompts/facts/" + video_type.value + "/" + prompt_file, 'r') as file:
                     prompt = file.read()
-                    prompt += "make a script like the on above,the script must have the same structure with a different wiered begining and other facts"
+                    prompt += "make a script like the on above with 3 facts,the script must have the same structure with a different wiered begining and other facts"
                     print("Promt:\n" + prompt)
+                if (video_type == Type.MOTIVATION):
+                    prompt = prompt.replace("other facts", "more motivation. Add a title at the begining like it is in the original.")
             elif promt_type == Type.STORY:
-                with open("utils/prompts/stories/story.txt", 'r') as file:
+                prompt_file = self.__choose_random_promt(promt_type, video_type)
+                with open("utils/prompts/stories/" + video_type.value + "/" + prompt_file, 'r') as file:
                     prompt = file.read()
-                    prompt += "make a script like the on above,the script must have the same structure but a different story"
+                    prompt += "make a story like the on above,the script must have the same structure but a different story"
+                    print("Promt:\n" + prompt)
             else:
                 raise Exception("Invalid promt type")
         else:

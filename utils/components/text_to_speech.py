@@ -1,4 +1,4 @@
-from elevenlabs import generate, set_api_key
+from elevenlabs import generate, set_api_key, voices, Voice
 from dotenv import load_dotenv
 import os
 
@@ -17,7 +17,7 @@ class TextToSpeech:
 
         audio = generate(
             text,
-            voice=voice,
+            voice=Voice(voice_id=voice),
             model="eleven_multilingual_v2"
         )
 

@@ -14,6 +14,34 @@ class VideoType(Enum):
                 return member
         raise ValueError(f"{label} is not a valid VideoType")
 
+
+class StoryType(Enum):
+    CREEPY = "creepy"
+    QUESTION = "question"
+    JOKE = "joke"
+    STORY = "story"
+
+    @staticmethod
+    def from_str(label):
+        for name, member in StoryType.__members__.items():
+            if member.value == label:
+                return member
+        raise ValueError(f"{label} is not a valid StoryType")
+
+class FactType(Enum):
+    FUNNY = "funny"
+    INTERESTING = "interesting"
+    SCARY = "scary"
+    MOTIVATIONAL = "motivational"
+
+    @staticmethod
+    def from_str(label):
+        for name, member in FactType.__members__.items():
+            if member.value == label:
+                return member
+        raise ValueError(f"{label} is not a valid FactType")
+
+
 def string_to_seconds(time_strings):
     result = []
 
@@ -36,33 +64,39 @@ class MotivationalVideo:
 
 
 class FactVideo:
-    def __init__(self, type, topic, voice, background, example):
+    def __init__(self, type, topic, voice, background, example, fact_type, filtered):
         self.type = VideoType.from_str(type)
         self.topic = topic
         self.voice = voice
         self.background = background
         self.example = example
+        self.fact_type = FactType.from_str(fact_type)
+        self.filtered = filtered
+
 
 class StoryVideo:
-    def __init__(self, type, topic, voice, background, example):
+    def __init__(self, type, topic, voice, background, example, parts, story_type):
         self.type = VideoType.from_str(type)
         self.topic = topic
         self.voice = voice
         self.background = background
         self.example = example
+        self.parts = parts
+        self.story_type = StoryType.from_str(story_type)
 
 
 class CaptionSettings:
-    def __init__(self, fontSize, color, font, strokeColor, strokeWidth, align, position, enabled, bgColor, kerning, interline, phrase):
-        self.fontSize = fontSize
+    def __init__(self, font_size, color, font, stroke_color, stroke_width, align, position, enabled, bg_color, kerning,
+                 interline, phrase):
+        self.fontSize = font_size
         self.color = color
         self.font = font
-        self.strokeColor = strokeColor
-        self.strokeWidth = strokeWidth
+        self.strokeColor = stroke_color
+        self.strokeWidth = stroke_width
         self.align = align
         self.position = position
         self.enabled = enabled
-        self.bgColor = bgColor
+        self.bgColor = bg_color
         self.kerning = kerning
         self.interline = interline
         self.phrase = phrase
@@ -72,7 +106,7 @@ class JsonReader:
     def __init__(self):
         pass
 
-    def create_user_from_json(self):
+    def create_video_from_json(self):
         with open("video.json", 'r') as file:
             data = json.load(file)
             video_type = VideoType.from_str(data['type'])

@@ -1,8 +1,9 @@
 {
-  "type": "motivation",
-  "url": ["https://www.youtube.com/watch?v=RPHP4fAisz8", "https://www.youtube.com/watch?v=MXLzC7Jo4hA"],
-  "filtered": ["dark", "blackwhite"],
-  "music": null,
-  "start": ["06:01", "00:00"],
-  "end": ["06:10", "00:30"]
+  "type": "fact",
+  "topic": "how to be more productive",
+  "background": "motivational",
+  "voice": "2EiwWnXFnvU5JabPnv8n",
+  "example": null,
+  "fact_type": "motivational",
+  "filtered": ["very_dark"]
 }

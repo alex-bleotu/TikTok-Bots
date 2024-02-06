@@ -1,13 +1,13 @@
 {
   "enabled": true,
-  "fontSize": 48,
+  "font_size": 48,
   "color": "white",
   "font": "Arial-Black",
-  "strokeColor": "black",
-  "strokeWidth": 2,
+  "stroke_color": "black",
+  "stroke_width": 2,
   "align": null,
   "position": "center",
-  "bgColor": "transparent",
+  "bg_color": "transparent",
   "kerning": -2,
   "interline": null,
   "phrase": false

@@ -167,13 +167,24 @@ class VideoProcessing:
         os.remove(audio_file)
         os.remove(video_file)
 
-    def generate_facts(self, caption, background):
+    def generate_facts(self, caption, background, filtered = None):
         audio_file = 'utils/temp/audio.mp3'
         output_file = 'utils/output/output.mp4'
 
         random_video = self.__choose_random_video(background)
         if random_video:
-            self.__process_video(os.path.join("utils/background/" + background, random_video), audio_file, output_file, caption)
+            self.__process_video(os.path.join("utils/background/" + background, random_video), audio_file, output_file, caption, filtered=filtered)
+
+        os.remove(audio_file)
+
+    def generate_stories(self, caption, background):
+        audio_file = 'utils/temp/audio.mp3'
+        output_file = 'utils/output/output.mp4'
+
+        random_video = self.__choose_random_video(background)
+        if random_video:
+            self.__process_video(os.path.join("utils/background/" + background, random_video), audio_file,
+                                 output_file, caption)
 
         os.remove(audio_file)
 

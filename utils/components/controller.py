@@ -33,37 +33,39 @@ class Controller:
         # self.__vp.open_video()
 
     def __run_facts(self, video, caption):
-        script = self.__tg.generate(Type.FACT, video.topic, video.example)
+        script = self.__tg.generate(Type.FACT, video.topic, video.example, video.fact_type)
         if video.topic is not None:
             print("\nScript generated about " + video.topic)
         print("\nNew Script:\n" + script)
         self.__tg.save_text(script)
         self.__tts.generate(video.voice)
         print("\nTTS generated")
-        self.__vp.generate_facts(caption, video.background)
+        self.__vp.generate_facts(caption, video.background, video.filtered)
         print("\nVideo generated")
         # self.__vp.open_video()
 
     def __run_story(self, video, caption):
-        script = self.__tg.generate(Type.STORY, video.topic, video.example)
+        script = self.__tg.generate(Type.STORY, video.topic, video.example, video.story_type)
         if video.topic is not None:
             print("\nScript generated about " + video.topic)
         print("\n" + script)
         self.__tg.save_text(script)
         self.__tts.generate(video.voice)
         print("\nTTS generated")
-        self.__vp.generate_facts(caption, video.background)
+        self.__vp.generate_stories(caption, video.background)
         print("\nVideo generated")
         # self.__vp.open_video()
 
     def run(self):
         print(banner + "\n")
 
-        video = self.__js.create_user_from_json()
+        video = self.__js.create_video_from_json()
         caption = self.__js.create_caption_settings_from_json()
         if video.type == Type.MOTIVATION:
             self.__run_motivation(video, caption)
         elif video.type == Type.FACT:
             self.__run_facts(video, caption)
+        elif video.type == Type.STORY:
+            self.__run_story(video, caption)
         else:
             raise Exception("Invalid video type")
