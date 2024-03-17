@@ -23,9 +23,9 @@ class Controller:
             print("Downloading video from " + video.url[index])
             self.__vd.download(video.url[index])
             print("Video downloaded")
-            self.__vp.generate_motivational(caption, video.start[index], video.end[index], video.filtered, index)
+            self.__vp.generate_motivational(video, caption, index)
             print("Video " + str(index + 1) + " added\n")
-            index += 1
+            # index += 1
         self.__vp.compile_video()
         print("Video generated")
         print("\nHashtags:\n" + self.__tg.get_hash_tags(video.type))
@@ -39,7 +39,7 @@ class Controller:
         # self.__tg.save_text(script)
         # self.__tts.generate(video.voice)
         # print("\nTTS generated")
-        self.__vp.generate_facts(caption, video.background, video.filtered, music=video.music)
+        self.__vp.generate_facts(video, caption)
         print("\nVideo generated")
         print("\nHashtags:\n" + self.__tg.get_hash_tags(video.type, video.fact_type))
         # self.__vp.open_video()
@@ -52,21 +52,31 @@ class Controller:
         self.__tg.save_text(script)
         self.__tts.generate(video.voice)
         print("\nTTS generated")
-        self.__vp.generate_stories(caption, video.background, music=video.music)
+        self.__vp.generate_stories(video, caption)
         print("\nVideo generated")
         print("\nHashtags:\n" + self.__tg.get_hash_tags(video.type))
         # self.__vp.open_video()
+
+    def __run_segments(self, video, caption):
+        self.__vd.download(video.url)
+        print("Video downloaded")
+        self.__vp.generate_segments(video, caption)
+        print("\nHashtags:\n" + self.__tg.get_hash_tags(video.type))
+
 
     def run(self):
         print(banner + "\n")
 
         video = self.__js.create_video_from_json()
         caption = self.__js.create_caption_settings_from_json()
+
         if video.type == Type.MOTIVATION:
             self.__run_motivation(video, caption)
         elif video.type == Type.FACT:
             self.__run_facts(video, caption)
         elif video.type == Type.STORY:
             self.__run_story(video, caption)
+        elif video.type == Type.SEGMENT:
+            self.__run_segments(video, caption)
         else:
             raise Exception("Invalid video type")

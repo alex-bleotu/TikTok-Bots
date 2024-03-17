@@ -1,16 +1,16 @@
 {
   "enabled": true,
-  "font_size": 50,
+  "font_size": "medium",
   "color": "white",
-  "font": "Arial-Black",
+  "font": "Calibri-Bold",
   "stroke_color": "black",
-  "stroke_width": 2,
+  "stroke_width": 1.5,
   "align": "center",
   "position": "center",
   "bg_color": "transparent",
-  "kerning": -2,
+  "kerning": -1,
   "interline": null,
-  "phrase": false,
-  "punctuation": false,
-  "title": true
+  "phrase": true,
+  "punctuation": true,
+  "title": false
 }

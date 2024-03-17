@@ -112,4 +112,6 @@ class TextGenerator:
                 return self.__list_to_string(random.sample(self.__motivational_hashtags, 6) + ["#tiktok", "#fyp",
                                                                                                "#foryoupage"])
             return ""
+        if type == Type.SEGMENT:
+            return "#tiktok #fyp #foryoupage"
         return ""

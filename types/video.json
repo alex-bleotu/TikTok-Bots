@@ -1,0 +1,9 @@
+{
+  "type": "segment",
+  "background": "minecraft",
+  "url": "https://www.youtube.com/watch?v=AdqQWg3ImEw",
+  "start": ["00:00"],
+  "end": ["03:03"],
+  "position": "top",
+  "segments": 3
+}
