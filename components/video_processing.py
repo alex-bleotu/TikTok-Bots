@@ -1,11 +1,12 @@
 import os
 import random
-from moviepy.editor import (VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip, ColorClip, CompositeAudioClip,
-                            concatenate_videoclips, clips_array)
+import subprocess
 from mutagen.mp3 import MP3
 from moviepy.config import change_settings
 import whisper_timestamped
 from components.json_reader import FontSize
+from moviepy.editor import (VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip, ColorClip, CompositeAudioClip,
+                            concatenate_videoclips, clips_array)
 
 change_settings({"IMAGEMAGICK_BINARY": "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"})
 change_settings({"FFMPEG_BINARY": "C:\Program Files\\ffmpeg\\bin\\ffmpeg.exe"})
@@ -101,8 +102,7 @@ class VideoProcessing:
             final_clip = cropped_clip.set_audio(audio_clip)
         else:
             audio = cropped_clip.audio
-            audio = audio.set_fps(44100)
-            audio.write_audiofile(self.__audio_path, logger=None)
+            audio.write_audiofile(self.__audio_path, logger=None, fps=44100)
             audio.close()
             # command = f"ffmpeg -i \"{self.__video_path}\" -vn -ab 128k -ar 44100 -y \"{self.__audio_path}\""
             # subprocess.call(command, shell=True)
