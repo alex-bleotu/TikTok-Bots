@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0e1c72e9-82d9-4232-85da-6806918154f4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TikTok-Bots.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/effects.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/json_reader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/text_generator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/text_to_speech.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/video_downloader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/video_processing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/voices.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/facts.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/factsCaption.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/motivation.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/motivationCaption.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/caption.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/video.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/prompts/facts/funny/fact.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/prompts/facts/motivational/fact.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/prompts/stories/question/story.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/prompts/stories/story/story.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2aXyTckDKZ7vxMYle6zMCUVcDZb" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "v2",
+    "last_opened_file_path": "D:/Projects/GitHub/TikTok-Bots/utils/background/satisfying",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\GitHub\TikTok-Bots\utils\background\satisfying" />
+      <recent name="D:\Projects\GitHub\TikTok-Bots\utils\background" />
+      <recent name="D:\Projects\GitHub\TikTok-Bots" />
+      <recent name="D:\Projects\GitHub\TikTok-Bots\utils\music\motivational" />
+      <recent name="D:\Projects\GitHub\TikTok-Bots\utils\music" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\GitHub\TikTok-Bots\utils\background\satisfying" />
+      <recent name="D:\Projects\GitHub\TikTok-Bots\output" />
+      <recent name="D:\Projects\GitHub\TikTok-Bots\types" />
+      <recent name="D:\Projects\GitHub\TikTok-Bots\utils\music\motivational" />
+      <recent name="D:\Projects\GitHub\TikTok-Bots" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="TikTok-Bots" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e1c72e9-82d9-4232-85da-6806918154f4" name="Changes" comment="" />
+      <created>1704479226818</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704479226818</updated>
+      <workItem from="1704479227925" duration="12921000" />
+      <workItem from="1704565806601" duration="4142000" />
+      <workItem from="1704577226556" duration="1091000" />
+      <workItem from="1704724364947" duration="500000" />
+      <workItem from="1704724880538" duration="5416000" />
+      <workItem from="1704735295514" duration="701000" />
+      <workItem from="1704746099985" duration="18000" />
+      <workItem from="1705609860786" duration="203000" />
+      <workItem from="1706557145632" duration="1446000" />
+      <workItem from="1707164987531" duration="3107000" />
+      <workItem from="1707168144080" duration="752000" />
+      <workItem from="1707211492347" duration="59000" />
+      <workItem from="1707224480437" duration="15760000" />
+      <workItem from="1708198883990" duration="594000" />
+      <workItem from="1709281415287" duration="2207000" />
+      <workItem from="1709564419091" duration="435000" />
+      <workItem from="1710225374278" duration="462000" />
+      <workItem from="1710226591392" duration="625000" />
+      <workItem from="1710526803605" duration="2636000" />
+      <workItem from="1710601296882" duration="17067000" />
+      <workItem from="1710618892445" duration="1900000" />
+      <workItem from="1710676042392" duration="2561000" />
+      <workItem from="1710678854022" duration="1869000" />
+      <workItem from="1710706022834" duration="1582000" />
+      <workItem from="1710707632339" duration="1614000" />
+      <workItem from="1710783884096" duration="2165000" />
+      <workItem from="1712407660857" duration="749000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TikTok_Bots$main.coverage" NAME="main Coverage Results" MODIFIED="1712407786113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
